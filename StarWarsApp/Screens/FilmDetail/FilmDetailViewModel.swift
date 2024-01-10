@@ -1,5 +1,5 @@
 //
-//  FilmsViewModel.swift
+//  FilmDetailViewModel.swift
 //  StarWarsApp
 //
 //  Created by Ikechukwu Onuorah on 10/01/2024.
@@ -7,19 +7,21 @@
 
 import Foundation
 
-protocol FilmListProtocol {
-  func getFilmList() async throws
+protocol FilmDetailProtocol {
+  func getFilmDetailById(filmId: Int) async throws
 }
 
-@MainActor
-class FilmsViewModel: FilmListProtocol, ObservableObject {
-  @Published var films: [Film] = []
+class FilmDetailViewModel: FilmDetailProtocol, ObservableObject {
+  @Published var film: Film?
   @Published var error: Error?
 
-  init() {
+  var filmId: Int
+
+  init(filmId: Int) {
+    self.filmId = filmId
     Task {
       do {
-        try await getFilmList()
+        try await getFilmDetailById(filmId: filmId)
       } catch {
         self.error = error
         print(error.localizedDescription)
@@ -27,11 +29,10 @@ class FilmsViewModel: FilmListProtocol, ObservableObject {
     }
   }
 
-  func getFilmList() async throws {
+  func getFilmDetailById(filmId: Int) async throws {
     do {
-      let response: FilmsList = try await NetworkManager.request(apiRouter: .getFilms)
-      films = response.results
-      print(films.count)
+      self.film = try await NetworkManager.request(apiRouter: .getFilmById(id: filmId))
+      print(film)
     } catch APIRequestError.invalidUrl {
       throw APIRequestError.invalidUrl
     } catch APIRequestError.invalidData {

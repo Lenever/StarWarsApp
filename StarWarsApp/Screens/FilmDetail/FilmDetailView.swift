@@ -8,11 +8,39 @@
 import SwiftUI
 
 struct FilmDetailView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  @StateObject var viewModel: FilmDetailViewModel
+
+  init(filmId: Int) {
+    _viewModel = StateObject(wrappedValue: FilmDetailViewModel(filmId: filmId))
+  }
+
+  var body: some View {
+    ZStack {
+      Color.backgroundColor
+        .edgesIgnoringSafeArea(.all)
+
+      ScrollView(.vertical, showsIndicators: false) {
+        VStack(alignment: .leading, spacing: 24) {
+          if let film = viewModel.film {
+            Text(film.title)
+            Text(film.openingCrawl)
+            Text(film.director)
+            Text(film.producer)
+            Text(film.releaseDate)
+            Text(film.created)
+            Text(film.edited)
+          }
+        }
+      }
     }
+    .navigationTitle("Film Detail")
+    .toolbarBackground(.visible, for: .navigationBar)
+    .toolbarColorScheme(.dark, for: .navigationBar)
+    .foregroundColor(.white)
+    .errorAlert(error: $viewModel.error)
+  }
 }
 
 #Preview {
-    FilmDetailView()
+  FilmDetailView(filmId: 1)
 }

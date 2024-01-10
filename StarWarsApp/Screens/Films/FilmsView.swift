@@ -32,7 +32,7 @@ struct FilmsView: View {
 
   func filmRow(film: Film) -> some View {
     NavigationLink {
-      FilmDetailView()
+      FilmDetailView(filmId: film.episodeID)
         .ignoresSafeArea()
     } label: {
       Text(film.title)
