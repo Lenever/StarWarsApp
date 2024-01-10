@@ -14,8 +14,17 @@ protocol FilmListProtocol {
 @MainActor
 class FilmsViewModel: FilmListProtocol, ObservableObject {
   @Published var films: [Film] = []
+  @Published var searchText = ""
   @Published var isLoading: Bool = false
   @Published var error: Error?
+
+  var searchResults: [Film] {
+    if searchText.isEmpty {
+      return films
+    } else {
+      return films.filter { $0.title.contains(searchText) }
+    }
+  }
 
   init() {
     isLoading = true

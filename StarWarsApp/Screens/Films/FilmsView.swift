@@ -15,7 +15,7 @@ struct FilmsView: View {
       Color.backgroundColor
         .edgesIgnoringSafeArea(.all)
 
-      List(viewModel.films, id: \.self) { film in
+      List(viewModel.searchResults, id: \.self) { film in
         filmRow(film: film)
           .listRowBackground(Color.backgroundColor)
       }
@@ -37,6 +37,7 @@ struct FilmsView: View {
     .toolbarBackground(.visible, for: .navigationBar)
     .toolbarColorScheme(.dark, for: .navigationBar)
     .foregroundColor(.white)
+    .searchable(text: $viewModel.searchText)
     .errorAlert(error: $viewModel.error)
   }
 
