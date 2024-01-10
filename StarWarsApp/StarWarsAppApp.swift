@@ -25,7 +25,10 @@ struct StarWarsAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+          NavigationStack {
+            FilmsView()
+          }
         }
         .modelContainer(sharedModelContainer)
     }

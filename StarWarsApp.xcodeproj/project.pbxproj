@@ -15,6 +15,16 @@
 		236758AB2B4E78A80096F5F8 /* StarWarsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758AA2B4E78A80096F5F8 /* StarWarsAppTests.swift */; };
 		236758B52B4E78A80096F5F8 /* StarWarsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758B42B4E78A80096F5F8 /* StarWarsAppUITests.swift */; };
 		236758B72B4E78A80096F5F8 /* StarWarsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758B62B4E78A80096F5F8 /* StarWarsAppUITestsLaunchTests.swift */; };
+		236758C72B4E7F900096F5F8 /* FilmsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758C62B4E7F900096F5F8 /* FilmsView.swift */; };
+		236758C92B4E7FBD0096F5F8 /* FilmsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758C82B4E7FBD0096F5F8 /* FilmsViewModel.swift */; };
+		236758CD2B4E803B0096F5F8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758CC2B4E803B0096F5F8 /* NetworkManager.swift */; };
+		236758D02B4E80740096F5F8 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758CF2B4E80740096F5F8 /* APIRouter.swift */; };
+		236758D32B4E81160096F5F8 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758D22B4E81160096F5F8 /* EndpointType.swift */; };
+		236758D52B4E81360096F5F8 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758D42B4E81360096F5F8 /* HTTPMethod.swift */; };
+		236758D82B4E818B0096F5F8 /* FilmsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758D72B4E818B0096F5F8 /* FilmsList.swift */; };
+		236758DB2B4E859E0096F5F8 /* View+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758DA2B4E859E0096F5F8 /* View+Error.swift */; };
+		236758DD2B4E85F40096F5F8 /* Color+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758DC2B4E85F40096F5F8 /* Color+UIColor.swift */; };
+		236758E12B4E88940096F5F8 /* FilmDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758E02B4E88940096F5F8 /* FilmDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +56,16 @@
 		236758B02B4E78A80096F5F8 /* StarWarsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarWarsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		236758B42B4E78A80096F5F8 /* StarWarsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAppUITests.swift; sourceTree = "<group>"; };
 		236758B62B4E78A80096F5F8 /* StarWarsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		236758C62B4E7F900096F5F8 /* FilmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsView.swift; sourceTree = "<group>"; };
+		236758C82B4E7FBD0096F5F8 /* FilmsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsViewModel.swift; sourceTree = "<group>"; };
+		236758CC2B4E803B0096F5F8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		236758CF2B4E80740096F5F8 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		236758D22B4E81160096F5F8 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
+		236758D42B4E81360096F5F8 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		236758D72B4E818B0096F5F8 /* FilmsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsList.swift; sourceTree = "<group>"; };
+		236758DA2B4E859E0096F5F8 /* View+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Error.swift"; sourceTree = "<group>"; };
+		236758DC2B4E85F40096F5F8 /* Color+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+UIColor.swift"; sourceTree = "<group>"; };
+		236758E02B4E88940096F5F8 /* FilmDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +116,10 @@
 		236758962B4E78A60096F5F8 /* StarWarsApp */ = {
 			isa = PBXGroup;
 			children = (
+				236758D92B4E856D0096F5F8 /* Extension */,
+				236758D62B4E816B0096F5F8 /* Model */,
+				236758CA2B4E7FFE0096F5F8 /* Network */,
+				236758C32B4E7C850096F5F8 /* Screens */,
 				236758972B4E78A60096F5F8 /* StarWarsAppApp.swift */,
 				236758992B4E78A60096F5F8 /* ContentView.swift */,
 				2367589B2B4E78A60096F5F8 /* Item.swift */,
@@ -128,6 +152,84 @@
 				236758B62B4E78A80096F5F8 /* StarWarsAppUITestsLaunchTests.swift */,
 			);
 			path = StarWarsAppUITests;
+			sourceTree = "<group>";
+		};
+		236758C32B4E7C850096F5F8 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				236758C52B4E7CF50096F5F8 /* FilmDetail */,
+				236758C42B4E7CC40096F5F8 /* Films */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		236758C42B4E7CC40096F5F8 /* Films */ = {
+			isa = PBXGroup;
+			children = (
+				236758C62B4E7F900096F5F8 /* FilmsView.swift */,
+				236758C82B4E7FBD0096F5F8 /* FilmsViewModel.swift */,
+			);
+			path = Films;
+			sourceTree = "<group>";
+		};
+		236758C52B4E7CF50096F5F8 /* FilmDetail */ = {
+			isa = PBXGroup;
+			children = (
+				236758E02B4E88940096F5F8 /* FilmDetailView.swift */,
+			);
+			path = FilmDetail;
+			sourceTree = "<group>";
+		};
+		236758CA2B4E7FFE0096F5F8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				236758D12B4E80EA0096F5F8 /* Service */,
+				236758CE2B4E80580096F5F8 /* Router */,
+				236758CB2B4E80290096F5F8 /* Manager */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		236758CB2B4E80290096F5F8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				236758CC2B4E803B0096F5F8 /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		236758CE2B4E80580096F5F8 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				236758CF2B4E80740096F5F8 /* APIRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		236758D12B4E80EA0096F5F8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				236758D42B4E81360096F5F8 /* HTTPMethod.swift */,
+				236758D22B4E81160096F5F8 /* EndpointType.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		236758D62B4E816B0096F5F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				236758D72B4E818B0096F5F8 /* FilmsList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		236758D92B4E856D0096F5F8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				236758DA2B4E859E0096F5F8 /* View+Error.swift */,
+				236758DC2B4E85F40096F5F8 /* Color+UIColor.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +362,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				236758DB2B4E859E0096F5F8 /* View+Error.swift in Sources */,
+				236758D32B4E81160096F5F8 /* EndpointType.swift in Sources */,
+				236758D02B4E80740096F5F8 /* APIRouter.swift in Sources */,
+				236758CD2B4E803B0096F5F8 /* NetworkManager.swift in Sources */,
+				236758E12B4E88940096F5F8 /* FilmDetailView.swift in Sources */,
+				236758D82B4E818B0096F5F8 /* FilmsList.swift in Sources */,
+				236758DD2B4E85F40096F5F8 /* Color+UIColor.swift in Sources */,
+				236758C92B4E7FBD0096F5F8 /* FilmsViewModel.swift in Sources */,
+				236758C72B4E7F900096F5F8 /* FilmsView.swift in Sources */,
+				236758D52B4E81360096F5F8 /* HTTPMethod.swift in Sources */,
 				2367589A2B4E78A60096F5F8 /* ContentView.swift in Sources */,
 				2367589C2B4E78A60096F5F8 /* Item.swift in Sources */,
 				236758982B4E78A60096F5F8 /* StarWarsAppApp.swift in Sources */,
