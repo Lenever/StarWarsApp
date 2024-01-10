@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		236758982B4E78A60096F5F8 /* StarWarsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758972B4E78A60096F5F8 /* StarWarsAppApp.swift */; };
-		2367589A2B4E78A60096F5F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758992B4E78A60096F5F8 /* ContentView.swift */; };
 		2367589C2B4E78A60096F5F8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2367589B2B4E78A60096F5F8 /* Item.swift */; };
 		2367589E2B4E78A80096F5F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2367589D2B4E78A80096F5F8 /* Assets.xcassets */; };
 		236758A12B4E78A80096F5F8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236758A02B4E78A80096F5F8 /* Preview Assets.xcassets */; };
@@ -26,6 +25,8 @@
 		236758DD2B4E85F40096F5F8 /* Color+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758DC2B4E85F40096F5F8 /* Color+UIColor.swift */; };
 		236758E12B4E88940096F5F8 /* FilmDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758E02B4E88940096F5F8 /* FilmDetailView.swift */; };
 		236758E32B4EA4670096F5F8 /* FilmDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758E22B4EA4670096F5F8 /* FilmDetailViewModel.swift */; };
+		236758E82B4EDE660096F5F8 /* UserDefaults+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758E72B4EDE660096F5F8 /* UserDefaults+Storage.swift */; };
+		236758EB2B4EF5480096F5F8 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236758EA2B4EF5480096F5F8 /* CustomProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +49,6 @@
 /* Begin PBXFileReference section */
 		236758942B4E78A60096F5F8 /* StarWarsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		236758972B4E78A60096F5F8 /* StarWarsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAppApp.swift; sourceTree = "<group>"; };
-		236758992B4E78A60096F5F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2367589B2B4E78A60096F5F8 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2367589D2B4E78A80096F5F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		236758A02B4E78A80096F5F8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -68,6 +68,8 @@
 		236758DC2B4E85F40096F5F8 /* Color+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+UIColor.swift"; sourceTree = "<group>"; };
 		236758E02B4E88940096F5F8 /* FilmDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailView.swift; sourceTree = "<group>"; };
 		236758E22B4EA4670096F5F8 /* FilmDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailViewModel.swift; sourceTree = "<group>"; };
+		236758E72B4EDE660096F5F8 /* UserDefaults+Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Storage.swift"; sourceTree = "<group>"; };
+		236758EA2B4EF5480096F5F8 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,12 +120,12 @@
 		236758962B4E78A60096F5F8 /* StarWarsApp */ = {
 			isa = PBXGroup;
 			children = (
+				236758E92B4EF5250096F5F8 /* Components */,
 				236758D92B4E856D0096F5F8 /* Extension */,
 				236758D62B4E816B0096F5F8 /* Model */,
 				236758CA2B4E7FFE0096F5F8 /* Network */,
 				236758C32B4E7C850096F5F8 /* Screens */,
 				236758972B4E78A60096F5F8 /* StarWarsAppApp.swift */,
-				236758992B4E78A60096F5F8 /* ContentView.swift */,
 				2367589B2B4E78A60096F5F8 /* Item.swift */,
 				2367589D2B4E78A80096F5F8 /* Assets.xcassets */,
 				2367589F2B4E78A80096F5F8 /* Preview Content */,
@@ -231,8 +233,17 @@
 			children = (
 				236758DA2B4E859E0096F5F8 /* View+Error.swift */,
 				236758DC2B4E85F40096F5F8 /* Color+UIColor.swift */,
+				236758E72B4EDE660096F5F8 /* UserDefaults+Storage.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		236758E92B4EF5250096F5F8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				236758EA2B4EF5480096F5F8 /* CustomProgressView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +378,7 @@
 			files = (
 				236758DB2B4E859E0096F5F8 /* View+Error.swift in Sources */,
 				236758D32B4E81160096F5F8 /* EndpointType.swift in Sources */,
+				236758EB2B4EF5480096F5F8 /* CustomProgressView.swift in Sources */,
 				236758D02B4E80740096F5F8 /* APIRouter.swift in Sources */,
 				236758CD2B4E803B0096F5F8 /* NetworkManager.swift in Sources */,
 				236758E12B4E88940096F5F8 /* FilmDetailView.swift in Sources */,
@@ -375,7 +387,7 @@
 				236758C92B4E7FBD0096F5F8 /* FilmsViewModel.swift in Sources */,
 				236758C72B4E7F900096F5F8 /* FilmsView.swift in Sources */,
 				236758D52B4E81360096F5F8 /* HTTPMethod.swift in Sources */,
-				2367589A2B4E78A60096F5F8 /* ContentView.swift in Sources */,
+				236758E82B4EDE660096F5F8 /* UserDefaults+Storage.swift in Sources */,
 				2367589C2B4E78A60096F5F8 /* Item.swift in Sources */,
 				236758982B4E78A60096F5F8 /* StarWarsAppApp.swift in Sources */,
 				236758E32B4EA4670096F5F8 /* FilmDetailViewModel.swift in Sources */,

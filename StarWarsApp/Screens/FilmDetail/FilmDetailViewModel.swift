@@ -17,18 +17,24 @@ class FilmDetailViewModel: FilmDetailProtocol, ObservableObject {
   @Published var isLoading: Bool = false
   @Published var error: Error?
 
-  var filmId: Int
+  init(film: Film) {
+    self.film = film
+  }
 
-  init(filmId: Int) {
-    self.filmId = filmId
-    isLoading = true
-    Task {
-      do {
-        try await getFilmDetailById(filmId: filmId)
-        isLoading = false
-      } catch {
-        isLoading = false
-        self.error = error
+  func refreshFilmDetails(shouldShowLoading: Bool = false) {
+    if shouldShowLoading {
+      isLoading = true
+    }
+
+    if let film = film {
+      Task {
+        do {
+          try await getFilmDetailById(filmId: film.episodeID)
+          isLoading = false
+        } catch {
+          isLoading = false
+          self.error = error
+        }
       }
     }
   }

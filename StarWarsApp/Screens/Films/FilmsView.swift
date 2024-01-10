@@ -14,23 +14,8 @@ struct FilmsView: View {
     ZStack {
       Color.backgroundColor
         .edgesIgnoringSafeArea(.all)
-
-      List(viewModel.searchResults, id: \.self) { film in
-        filmRow(film: film)
-          .listRowBackground(Color.backgroundColor)
-      }
-      .listStyle(PlainListStyle())
-      .listRowBackground(Color.backgroundColor)
-      .scrollContentBackground(.hidden)
-      .disabled(viewModel.isLoading)
-      .blur(radius: viewModel.isLoading ? 3 : 0)
-
-      ProgressView()
-        .progressViewStyle(.automatic)
-        .frame(width: 100, height: 100)
-        .background(Color.secondary.colorInvert())
-        .foregroundColor(Color.primary)
-        .cornerRadius(20)
+      films
+      CustomProgressView()
         .opacity(viewModel.isLoading ? 1 : 0)
     }
     .navigationTitle("Films")
@@ -41,9 +26,24 @@ struct FilmsView: View {
     .errorAlert(error: $viewModel.error)
   }
 
+  var films: some View {
+    List(viewModel.searchResults, id: \.self) { film in
+      filmRow(film: film)
+        .listRowBackground(Color.backgroundColor)
+    }
+    .listStyle(PlainListStyle())
+    .listRowBackground(Color.backgroundColor)
+    .scrollContentBackground(.hidden)
+    .disabled(viewModel.isLoading)
+    .blur(radius: viewModel.isLoading ? 3 : 0)
+    .refreshable {
+      viewModel.refreshList(shouldShowLoading: true)
+    }
+  }
+
   func filmRow(film: Film) -> some View {
     NavigationLink {
-      FilmDetailView(filmId: film.episodeID)
+      FilmDetailView(film: film)
         .ignoresSafeArea()
     } label: {
       Text(film.title)

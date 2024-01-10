@@ -27,7 +27,20 @@ class FilmsViewModel: FilmListProtocol, ObservableObject {
   }
 
   init() {
-    isLoading = true
+    if let filmList = UserDefaultsStorage.filmList {
+      self.films = filmList
+    } else {
+      isLoading = true
+    }
+
+    refreshList()
+  }
+
+  func refreshList(shouldShowLoading: Bool = false) {
+    if shouldShowLoading {
+      isLoading = true
+    }
+    
     Task {
       do {
         try await getFilmList()
@@ -42,6 +55,7 @@ class FilmsViewModel: FilmListProtocol, ObservableObject {
   func getFilmList() async throws {
     do {
       let response: FilmsList = try await NetworkManager.request(apiRouter: .getFilms)
+      UserDefaultsStorage.filmList = response.results
       films = response.results
     } catch APIRequestError.invalidUrl {
       throw APIRequestError.invalidUrl
