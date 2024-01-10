@@ -11,20 +11,24 @@ protocol FilmDetailProtocol {
   func getFilmDetailById(filmId: Int) async throws
 }
 
+@MainActor
 class FilmDetailViewModel: FilmDetailProtocol, ObservableObject {
   @Published var film: Film?
+  @Published var isLoading: Bool = false
   @Published var error: Error?
 
   var filmId: Int
 
   init(filmId: Int) {
     self.filmId = filmId
+    isLoading = true
     Task {
       do {
         try await getFilmDetailById(filmId: filmId)
+        isLoading = false
       } catch {
+        isLoading = false
         self.error = error
-        print(error.localizedDescription)
       }
     }
   }
@@ -32,7 +36,6 @@ class FilmDetailViewModel: FilmDetailProtocol, ObservableObject {
   func getFilmDetailById(filmId: Int) async throws {
     do {
       self.film = try await NetworkManager.request(apiRouter: .getFilmById(id: filmId))
-      print(film)
     } catch APIRequestError.invalidUrl {
       throw APIRequestError.invalidUrl
     } catch APIRequestError.invalidData {

@@ -31,7 +31,18 @@ struct FilmDetailView: View {
             Text(film.edited)
           }
         }
+        .padding(.top, 100)
       }
+      .disabled(viewModel.isLoading)
+      .blur(radius: viewModel.isLoading ? 3 : 0)
+
+      ProgressView()
+        .progressViewStyle(.automatic)
+        .frame(width: 100, height: 100)
+        .background(Color.secondary.colorInvert())
+        .foregroundColor(Color.primary)
+        .cornerRadius(20)
+        .opacity(viewModel.isLoading ? 1 : 0)
     }
     .navigationTitle("Film Detail")
     .toolbarBackground(.visible, for: .navigationBar)

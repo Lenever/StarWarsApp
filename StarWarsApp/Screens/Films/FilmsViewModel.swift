@@ -14,15 +14,18 @@ protocol FilmListProtocol {
 @MainActor
 class FilmsViewModel: FilmListProtocol, ObservableObject {
   @Published var films: [Film] = []
+  @Published var isLoading: Bool = false
   @Published var error: Error?
 
   init() {
+    isLoading = true
     Task {
       do {
         try await getFilmList()
+        isLoading = false
       } catch {
+        isLoading = false
         self.error = error
-        print(error.localizedDescription)
       }
     }
   }
@@ -31,7 +34,6 @@ class FilmsViewModel: FilmListProtocol, ObservableObject {
     do {
       let response: FilmsList = try await NetworkManager.request(apiRouter: .getFilms)
       films = response.results
-      print(films.count)
     } catch APIRequestError.invalidUrl {
       throw APIRequestError.invalidUrl
     } catch APIRequestError.invalidData {

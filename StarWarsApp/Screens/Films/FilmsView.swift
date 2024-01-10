@@ -22,6 +22,16 @@ struct FilmsView: View {
       .listStyle(PlainListStyle())
       .listRowBackground(Color.backgroundColor)
       .scrollContentBackground(.hidden)
+      .disabled(viewModel.isLoading)
+      .blur(radius: viewModel.isLoading ? 3 : 0)
+
+      ProgressView()
+        .progressViewStyle(.automatic)
+        .frame(width: 100, height: 100)
+        .background(Color.secondary.colorInvert())
+        .foregroundColor(Color.primary)
+        .cornerRadius(20)
+        .opacity(viewModel.isLoading ? 1 : 0)
     }
     .navigationTitle("Films")
     .toolbarBackground(.visible, for: .navigationBar)
