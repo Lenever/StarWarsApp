@@ -18,6 +18,8 @@ class FilmsViewModel: FilmListProtocol, ObservableObject {
   @Published var isLoading: Bool = false
   @Published var error: Error?
 
+  var networkManager: NetworkManagerProtocol
+
   var searchResults: [Film] {
     if searchText.isEmpty {
       return films
@@ -26,7 +28,8 @@ class FilmsViewModel: FilmListProtocol, ObservableObject {
     }
   }
 
-  init() {
+  init(networkManager: NetworkManagerProtocol = NetworkManager()) {
+    self.networkManager = networkManager
     if let filmList = UserDefaultsStorage.filmList {
       self.films = filmList
     } else {
@@ -54,7 +57,7 @@ class FilmsViewModel: FilmListProtocol, ObservableObject {
 
   func getFilmList() async throws {
     do {
-      let response: FilmsList = try await NetworkManager.request(apiRouter: .getFilms)
+      let response: FilmsList = try await networkManager.request(apiRouter: .getFilms)
       UserDefaultsStorage.filmList = response.results
       films = response.results
     } catch {

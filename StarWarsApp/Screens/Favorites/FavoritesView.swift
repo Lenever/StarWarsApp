@@ -36,8 +36,6 @@ struct FavoritesView: View {
     .listStyle(PlainListStyle())
     .listRowBackground(Color.backgroundColor)
     .scrollContentBackground(.hidden)
-    .disabled(viewModel.isLoading)
-    .blur(radius: viewModel.isLoading ? 3 : 0)
     .refreshable {
       viewModel.refreshList()
     }

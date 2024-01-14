@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FavoritesProtocol {
-  func refreshList() async throws
+  func refreshList()
 }
 
 class FavoritesViewModel: FavoritesProtocol, ObservableObject {

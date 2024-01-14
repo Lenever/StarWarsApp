@@ -28,4 +28,21 @@ struct Film: Codable, Hashable {
     case releaseDate = "release_date"
     case characters, planets, starships, vehicles, species, created, edited, url
   }
+
+  static var dummy = Film(
+      title: "Dummy",
+      episodeID: 0,
+      openingCrawl: "",
+      director: "",
+      producer: "",
+      releaseDate: "",
+      characters: [],
+      planets: [],
+      starships: [],
+      vehicles: [],
+      species: [],
+      created: "",
+      edited: "",
+      url: ""
+    )
 }

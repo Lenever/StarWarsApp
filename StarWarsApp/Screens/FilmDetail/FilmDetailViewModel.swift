@@ -18,8 +18,14 @@ class FilmDetailViewModel: FilmDetailProtocol, ObservableObject {
   @Published var isLoading: Bool = false
   @Published var error: Error?
 
-  init(film: Film) {
+  var networkManager: NetworkManagerProtocol
+
+  init(
+    film: Film,
+    networkManager: NetworkManagerProtocol = NetworkManager()
+  ) {
     self.film = film
+    self.networkManager = networkManager
 
     if let favorites = UserDefaultsStorage.favoriteFilms {
       self.isFavorite = favorites.contains(film)
@@ -63,7 +69,7 @@ class FilmDetailViewModel: FilmDetailProtocol, ObservableObject {
 
   func getFilmDetailById(filmId: Int) async throws {
     do {
-      self.film = try await NetworkManager.request(apiRouter: .getFilmById(id: filmId))
+      self.film = try await networkManager.request(apiRouter: .getFilmById(id: filmId))
     } catch {
       throw error
     }
