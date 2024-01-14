@@ -12,7 +12,7 @@ struct StarWarsAppApp: App {
   var body: some Scene {
     WindowGroup {
       NavigationStack {
-        FilmsView()
+        HomeView()
       }
     }
   }

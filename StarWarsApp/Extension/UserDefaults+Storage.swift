@@ -10,6 +10,7 @@ import Foundation
 extension UserDefaults {
   enum Keys: String, CaseIterable {
     case filmList
+    case favoriteFilms
   }
 
   func reset() {
@@ -55,4 +56,7 @@ struct UserDefault<T: Codable> {
 enum UserDefaultsStorage {
   @UserDefault(.filmList, defaultValue: nil)
   static var filmList: [Film]?
+
+  @UserDefault(.favoriteFilms, defaultValue: nil)
+  static var favoriteFilms: [Film]?
 }

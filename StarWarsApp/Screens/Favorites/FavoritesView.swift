@@ -1,14 +1,14 @@
 //
-//  FilmsView.swift
+//  FavoritesView.swift
 //  StarWarsApp
 //
-//  Created by Ikechukwu Onuorah on 10/01/2024.
+//  Created by Ikechukwu Onuorah on 14/01/2024.
 //
 
 import SwiftUI
 
-struct FilmsView: View {
-  @StateObject var viewModel = FilmsViewModel()
+struct FavoritesView: View {
+  @StateObject var viewModel = FavoritesViewModel()
 
   var body: some View {
     NavigationView {
@@ -16,15 +16,15 @@ struct FilmsView: View {
         Color.backgroundColor
           .edgesIgnoringSafeArea(.all)
         films
-        CustomProgressView()
-          .opacity(viewModel.isLoading ? 1 : 0)
       }
-      .navigationTitle(Strings.films)
+      .navigationTitle(Strings.favorites)
       .toolbarBackground(.visible, for: .navigationBar)
       .toolbarColorScheme(.dark, for: .navigationBar)
       .foregroundColor(.white)
       .searchable(text: $viewModel.searchText)
-      .errorAlert(error: $viewModel.error)
+      .onAppear() {
+        viewModel.refreshList()
+      }
     }
   }
 
@@ -39,7 +39,7 @@ struct FilmsView: View {
     .disabled(viewModel.isLoading)
     .blur(radius: viewModel.isLoading ? 3 : 0)
     .refreshable {
-      viewModel.refreshList(shouldShowLoading: true)
+      viewModel.refreshList()
     }
   }
 
@@ -57,5 +57,5 @@ struct FilmsView: View {
 }
 
 #Preview {
-  FilmsView()
+    FavoritesView()
 }

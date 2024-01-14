@@ -13,12 +13,36 @@ protocol FilmDetailProtocol {
 
 @MainActor
 class FilmDetailViewModel: FilmDetailProtocol, ObservableObject {
-  @Published var film: Film?
+  @Published var film: Film
+  @Published var isFavorite: Bool
   @Published var isLoading: Bool = false
   @Published var error: Error?
 
   init(film: Film) {
     self.film = film
+
+    if let favorites = UserDefaultsStorage.favoriteFilms {
+      self.isFavorite = favorites.contains(film)
+    } else {
+      self.isFavorite = false
+    }
+  }
+
+  func handleAddToFavorites() {
+    if let favorites = UserDefaultsStorage.favoriteFilms {
+      if favorites.contains(film) {
+        UserDefaultsStorage.favoriteFilms = favorites.filter {
+          $0 == film
+        }
+        isFavorite = false
+      } else {
+        UserDefaultsStorage.favoriteFilms?.append(film)
+        isFavorite = true
+      }
+    } else {
+      UserDefaultsStorage.favoriteFilms = [film]
+      isFavorite = true
+    }
   }
 
   func refreshFilmDetails(shouldShowLoading: Bool = false) {
@@ -26,15 +50,13 @@ class FilmDetailViewModel: FilmDetailProtocol, ObservableObject {
       isLoading = true
     }
 
-    if let film = film {
-      Task {
-        do {
-          try await getFilmDetailById(filmId: film.episodeID)
-          isLoading = false
-        } catch {
-          isLoading = false
-          self.error = error
-        }
+    Task {
+      do {
+        try await getFilmDetailById(filmId: film.episodeID)
+        isLoading = false
+      } catch {
+        isLoading = false
+        self.error = error
       }
     }
   }
@@ -42,12 +64,6 @@ class FilmDetailViewModel: FilmDetailProtocol, ObservableObject {
   func getFilmDetailById(filmId: Int) async throws {
     do {
       self.film = try await NetworkManager.request(apiRouter: .getFilmById(id: filmId))
-    } catch APIRequestError.invalidUrl {
-      throw APIRequestError.invalidUrl
-    } catch APIRequestError.invalidData {
-      throw APIRequestError.invalidData
-    } catch APIRequestError.invalidResponse {
-      throw APIRequestError.invalidResponse
     } catch {
       throw error
     }

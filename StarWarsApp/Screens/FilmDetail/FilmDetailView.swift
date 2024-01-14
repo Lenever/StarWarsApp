@@ -22,7 +22,19 @@ struct FilmDetailView: View {
       CustomProgressView()
         .opacity(viewModel.isLoading ? 1 : 0)
     }
-    .navigationTitle(viewModel.film?.title ?? "Film Detail")
+    .navigationTitle(viewModel.film.title)
+    .toolbar {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Button(action: {
+          viewModel.handleAddToFavorites()
+        }) {
+          Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
+            .resizable()
+            .scaledToFit()
+            .foregroundStyle(.purple)
+        }
+      }
+    }
     .toolbarBackground(.visible, for: .navigationBar)
     .toolbarColorScheme(.dark, for: .navigationBar)
     .foregroundColor(.white)
@@ -32,15 +44,13 @@ struct FilmDetailView: View {
   var filmDetail: some View {
     ScrollView(.vertical, showsIndicators: false) {
       VStack(alignment: .leading, spacing: 24) {
-        if let film = viewModel.film {
-          Text(film.title)
-          Text(film.openingCrawl)
-          Text(film.director)
-          Text(film.producer)
-          Text(film.releaseDate)
-          Text(film.created)
-          Text(film.edited)
-        }
+        Text(viewModel.film.title)
+        Text(viewModel.film.openingCrawl)
+        Text(viewModel.film.director)
+        Text(viewModel.film.producer)
+        Text(viewModel.film.releaseDate)
+        Text(viewModel.film.created)
+        Text(viewModel.film.edited)
       }
       .padding(.top, 150)
     }

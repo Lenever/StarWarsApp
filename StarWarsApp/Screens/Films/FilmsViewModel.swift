@@ -57,12 +57,6 @@ class FilmsViewModel: FilmListProtocol, ObservableObject {
       let response: FilmsList = try await NetworkManager.request(apiRouter: .getFilms)
       UserDefaultsStorage.filmList = response.results
       films = response.results
-    } catch APIRequestError.invalidUrl {
-      throw APIRequestError.invalidUrl
-    } catch APIRequestError.invalidData {
-      throw APIRequestError.invalidData
-    } catch APIRequestError.invalidResponse {
-      throw APIRequestError.invalidResponse
     } catch {
       throw error
     }
